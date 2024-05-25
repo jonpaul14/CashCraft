@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -85,7 +87,7 @@ fun Login(){
         )
         var user by remember { mutableStateOf("Username") }
         var pass by remember { mutableStateOf("Password") }
-        var passwordVisible by rememberSaveable { mutableStateOf(false) }
+        val passwordVisible by rememberSaveable { mutableStateOf(false) }
         TextField(value = user,{text ->user = text},
             Modifier
                 .fillMaxWidth()
@@ -121,6 +123,36 @@ fun Login(){
             visualTransformation = if(passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
+        Button(onClick = { /*TODO*/ }, modifier = Modifier
+            .fillMaxWidth()
+            .height(66.dp)
+            .padding(start = 64.dp, end = 64.dp, top = 8.dp, bottom = 8.dp)
+            , shape = RoundedCornerShape(50)
+
+        ) {
+            Text(text = "Login", color = Color.White, fontSize = 18.sp,
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.Bold)
+        }
+        Text(text = "Don't remember password? click here", modifier = Modifier
+            .padding(top = 8.dp, bottom = 8.dp),
+            fontSize = 14.sp,
+            color = Color(android.graphics.Color.parseColor("#7d32a8"))
+        )
+        Row ()
+
+         {
+            Image(painter = painterResource(id = R.drawable.google), contentDescription ="",modifier = Modifier.padding(top = 19.dp, bottom = 20.dp, start = 8.dp, end = 8.dp) )
+            Image(painter = painterResource(id = R.drawable.facebook), contentDescription ="",modifier = Modifier.padding(top = 19.dp, bottom = 20.dp, start = 8.dp, end = 8.dp) )
+            Image(painter = painterResource(id = R.drawable.twitter), contentDescription ="",modifier = Modifier.padding(top = 19.dp, bottom = 20.dp, start = 8.dp, end = 8.dp) )
+
+        }
+        Image(
+            painterResource(id = R.drawable.bottom_background),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds
+        )
+
 
 
 
